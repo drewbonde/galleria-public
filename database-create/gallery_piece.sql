@@ -1,0 +1,65 @@
+CREATE DATABASE  IF NOT EXISTS `gallery` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `gallery`;
+-- MySQL dump 10.13  Distrib 8.0.28, for macos11 (x86_64)
+--
+-- Host: localhost    Database: gallery
+-- ------------------------------------------------------
+-- Server version	8.0.28
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `piece`
+--
+
+DROP TABLE IF EXISTS `piece`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `piece` (
+  `PIECE_ID` int NOT NULL,
+  `ARTIST_ID` int NOT NULL,
+  `PIECE_TITLE` varchar(45) DEFAULT NULL,
+  `PIECE_YEAR` date DEFAULT NULL,
+  `PIECE_DESCRIPTION` varchar(45) DEFAULT NULL,
+  `PIECE_PRICE` decimal(12,2) DEFAULT NULL,
+  `DATE_ADDED` date DEFAULT NULL,
+  `PIECE_STATUS` varchar(45) DEFAULT NULL,
+  `MUSEUM_ID` int NOT NULL,
+  `PIECE_TYPE` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`PIECE_ID`),
+  KEY `ARTIST_ID` (`ARTIST_ID`),
+  KEY `MUSEUM_ID_idx` (`MUSEUM_ID`),
+  CONSTRAINT `ARTIST_ID` FOREIGN KEY (`ARTIST_ID`) REFERENCES `artist` (`ARTIST_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `MUSEUM_ID_IDX` FOREIGN KEY (`MUSEUM_ID`) REFERENCES `museum` (`MUSEUM_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `piece`
+--
+
+LOCK TABLES `piece` WRITE;
+/*!40000 ALTER TABLE `piece` DISABLE KEYS */;
+INSERT INTO `piece` VALUES (10001,1001,'Blue Skies','2008-01-02','Pastel blue skyscape.',500.00,'2018-01-05','For Sale',101,'Painting'),(10002,1002,'Peace of Mind','2010-09-06','Representation of a serene mind.',750.00,'2018-06-10','Purchased',101,'Painting'),(10003,1003,'Endless Search','2017-03-28','Open space and open ended.',1500.00,'2018-12-30','For Sale',102,'Painting'),(10004,1004,'Gamble','2017-08-08','Negative gambling propoganda.',500.00,'2019-04-16','For Sale',103,'Sculpture'),(10005,1004,'For Now, We Rest.','2018-08-17','Stillness with hectic background.',750.00,'2019-05-31','Purchased',103,'Sculpture');
+/*!40000 ALTER TABLE `piece` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-04-08 14:54:04
