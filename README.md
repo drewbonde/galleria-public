@@ -14,7 +14,7 @@ Go back into the projects main folder, and into the client folder. Run the follo
 
 ### `npm i && npm start`
 
-This will open the projects front-end.
+This opens the project's front-end. If a window doesn't automatically pop up, open up a web browser, and go to http://localhost:3000/
 
 Go back a folder, and go into the server folder. Go into index.js, and on line 10, change the password in the quotes to your local instance of MySQL's password.
 Then run the following commands:
